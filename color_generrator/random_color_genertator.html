@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>color~~~</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+<div class="wrapper">
+<div class="text">Random Color Generator</div>
+  <div class="container">
+    <div id="box_1">
+      <div class="text_1"></div>
+    </div>
+    <div id="box_2">
+      <div class="text_2"></div>
+    </div>
+    <div id="box_3">
+      <div class="text_3"></div>
+    </div>
+    <div id="box_4">
+      <div class="text_4"></div>
+    </div>
+    <div id="box_5">
+      <div class="text_5"></div>
+    </div>
+    <button class="button" id="generate">Generate</button>
+  </div>
+  <div class="credit">This is my Blog.欢迎大家留言提意见<a href="http://blog.leanote.com/elyar">艾力(不是演讲的那个艾力)</a></div>
+</div>
+</div>
+
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  generate();
+  
+  $("#generate").on("click", function() {
+    generate();
+  }); 
+});
+function generate() {
+  let rgb, grey, color;
+  for (let i = 1; i < 6; i++) {
+    rgb = createRGB();
+    grey = fontcolor(rgb);
+    color = RGBtoHex(rgb);
+    $("#box_" + i).css("background", "rgb(" + rgb + ")");
+    $(".text_" + i).text("#" + color);
+    $(".text_" + i).css("color", "rgb(" + grey + ")");
+  }
+  $(".container > div").css("box-shadow", "3px 3px 10px #DEE0E0");
+}
+function createRGB() {
+  let color = [];
+  for (let i = 0; i < 3; i++) {
+    let random = Math.floor(Math.random() * 256);
+    color.push(random);
+  }
+  return color;
+};
+function RGBtoHex(rgb) {
+    console.log(rgb)
+    var a = rgb.reduce(function(hex, color){
+    const hexLetters = ['A', 'B', 'C', 'D', 'E', 'F'];
+    let first = color % 16;
+    // console.log("first "+first);
+    // console.log(hex)
+    hex += first > 9 ? hexLetters[first - 10] : String(first);
+    return hex;
+    });
+    console.log(a);
+  return a; 
+}
+function fontcolor(arr) {
+  const grey = Math.floor(0.21 * arr[0] + 0.72 * arr[1] + 0.07 * arr[2]);
+  return grey < 150 ? [235, 235, 235] : [35, 35, 35];
+}
+</script>
+</body>
+</html>
