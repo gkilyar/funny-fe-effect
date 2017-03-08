@@ -47,6 +47,9 @@
             myClickHandler: function(e) {
                 var str = "";
                 str += myData.one+'px' + " " + myData.two+'px'  + " " + myData.three+'px' + " " + myData.four+'px';
+                if(str.indexOf('%')>0)
+                str = str.replace(/\px/g,"");
+                console.log(str);
                 $(".circle").css("border-radius", str);
                 myData.str = "border-radius: " + str;
             },
