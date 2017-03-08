@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todos</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css">
+    <script src="http://cdn.jsdelivr.net/vue/1.0.13/vue.min.js"></script>
+</head>
+<body>
+<div id="name" class="container">
+
+    <div class="row">
+        <div class="col s12 tasks">
+
+            <div v-show='remaining'>
+                <h3>Tasks - {{ remaining }}</h3>
+                <ul class="collection">
+                    <li class="collection-item" v-for="task in tasks | inProcess">
+                        <div>
+                            <span @dblclick="editTask(task)">{{ task.body }}</span>
+                            <a class="task-icon" @click="removeTask(task)">
+                                <i class="material-icons">delete</i>
+                            </a>
+                            <a class="task-icon" @click="toggleCompleteTask(task)">
+                                <i class="material-icons">done</i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <form @submit.prevent="addTask">
+                <div class="input-field">
+                    <input type="text"
+                           v-el:task
+                           placeholder="I need to..."
+                           v-model="newTask"/>
+                </div>
+                <button class="btn light-blue darken-1" type="submit">Add Task</button>
+                <button class="btn green accent-3" @click="completeAll">Complete All</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="row" v-show="completions">
+        <div class="col s12 complete">
+            <h3>Complete - {{ completions }}</h3>
+            <ul class="collection">
+                <li class="collection-item" v-for="task in tasks | complete">
+                    <div>
+                        <span :class="{ 'completed' : task.completed }">{{ task.body }}</span>
+                        <a class="task-icon" @click="toggleCompleteTask(task)">
+                            <i class="material-icons">replay</i>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <button class="btn grey lighten-1" @click="clearCompleted">Clear</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    new Vue ({
+        el: "#name",
+        data: {
+            tasks: [
+                { body: "Do laundry", completed: true },
+                { body: "Learn about Vuejs", completed: false }
+            ],
+            newTask: ''
+        },
+
+//------------------------------------
+// Computed
+//------------------------------------
+
+        computed: {
+
+            completions() {
+                return this.tasks.filter(function(task) {
+                    return task.completed;
+                }).length;
+            },
+
+            remaining() {
+                return this.tasks.filter(function(task) {
+                    return !task.completed;
+                }).length;
+            }
+        },
+
+//------------------------------------
+// Filters
+//------------------------------------
+
+        filters: {
+
+            inProcess(tasks) {
+                return tasks.filter(function(task) {
+                    return !task.completed;
+                });
+            },
+
+            complete(tasks) {
+                return tasks.filter(function(task) {
+                    return task.completed;
+                });
+            }
+        },
+
+//------------------------------------
+// Methods
+//------------------------------------
+
+        methods: {
+
+            addTask() {
+                if (!this.newTask) { return; }
+
+                this.tasks.push({
+                    body: this.newTask,
+                    completed: false
+                })
+
+                this.newTask = ''
+            },
+
+            toggleCompleteTask(task) {
+                task.completed = !task.completed;
+            },
+
+            completeAll() {
+                this.tasks.forEach(function(task) {
+                    task.completed = true
+                });
+            },
+
+            editTask(task) {
+                this.removeTask(task);
+                this.newTask = task.body;
+                this.$els.task.focus();
+            },
+
+            removeTask(task) {
+                this.tasks.$remove(task);
+            },
+
+            clearCompleted() {
+                this.tasks = this.tasks.filter(function(task) {
+                    return !task.completed;
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>

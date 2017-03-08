@@ -1,0 +1,41 @@
+body {
+  height: 100vh;
+  display: flex;
+}
+
+#app {
+  margin: 100px auto;
+}
+
+.row:first-child {
+  margin-bottom: 50px;
+}
+
+button {
+  margin: 10px 10px 0 0;
+}
+
+.task-icon {
+  float: right;
+  color: #00e676;
+  padding-left: 15px;
+  cursor: pointer;
+  i {
+    font-size: 18px;
+  }
+}
+
+.complete .task-icon {
+  i {
+    color: #BDBDBD;
+  }
+}
+
+.tasks .task-icon:nth-child(2) {
+  color: #ef5350;
+}
+
+.completed {
+  color: #BDBDBD;
+  text-decoration: line-through;
+}
