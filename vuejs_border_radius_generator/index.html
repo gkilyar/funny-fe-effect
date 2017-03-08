@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="vue.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="title">
+        Border Radius Generator
+        <p>use with px or %</p>
+    </div>
+    <div class="workspace">
+        <div id="name">
+            <label for="one"> Top Left</label>
+            <input v-on:click="clearIt" type="text" id="one" v-model="one" placeholder="top left:左上角" />
+            <label for="two"> Top Right</label>
+            <input v-on:click="clearIt" type="text" id="two" v-model="two" placeholder="top right:右上角" />
+            <label for="three"> Bottom Right</label>
+            <input v-on:click="clearIt" type="text" id="three" v-model="three" placeholder="bottom right:右下角" />
+            <label for="four"> Bottom Left</label>
+            <input v-on:click="clearIt" type="text" id="four" v-model="four" placeholder="bottom left:左下角" />
+            <button v-on:click="myClickHandler"> Generate</button>
+            <div class="copy">{{str}}
+            </div>
+        </div>
+        <div class="circle"></div>
+    </div>
+</div>
+
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+
+    var myData = {
+        "one": "0px",
+        "two": "0px",
+        "three": "0px",
+        "four": "0px",
+        "str": ""
+    };
+    new Vue({
+        el: "#name",
+        data: myData,
+        methods: {
+            myClickHandler: function(e) {
+                var str = "";
+                str += myData.one + " " + myData.two  + " " + myData.three + " " + myData.four;
+                $(".circle").css("border-radius", str);
+                myData.str = "border-radius: " + str;
+            },
+            clearIt: function(e) {
+                $(e.toElement).val('');
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

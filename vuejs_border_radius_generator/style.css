@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400");
+@import url("https://fonts.googleapis.com/css?family=Merriweather:300,400");
+body {
+  background: #EEEFEF;
+  font-family: 'Source Sans Pro', sans-serif; }
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .wrapper .title {
+    font-size: 25px;
+    letter-spacing: 2px;
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+    color: #4A5759; }
+    .wrapper .title p {
+      font-size: 12px;
+      text-align: center; }
+
+.workspace {
+  display: flex;
+  width: 70%;
+  justify-content: center;
+  align-items: center; }
+  .workspace div {
+    margin: 20px; }
+
+#name {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px; }
+  #name > * {
+    margin: 5px; }
+  #name label {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1.5px; }
+  #name .copy {
+    color: #4A5759;
+    font-size: 14px;
+    letter-spacing: 1.5px; }
+  #name input {
+    height: 30px;
+    padding-left: 5px;
+    outline: none;
+    color: #4A5759; }
+  #name button {
+    margin: 20px 10px;
+    width: 150px;
+    height: 35px;
+    background: #FFF;
+    border: 1px solid #B388EB;
+    color: #B388EB;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    border-radius: 10px;
+    font-weight: 200;
+    outline: none; }
+  #name button:disabled {
+    opacity: 0.6; }
+
+.circle {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(45deg, #9da 0%, #000 100%);
+  transition: all 0.5s ease; }
+
+
