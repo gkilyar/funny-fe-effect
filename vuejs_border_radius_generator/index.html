@@ -15,14 +15,14 @@
     <div class="workspace">
         <div id="name">
             <label for="one"> Top Left</label>
-            <input v-on:click="clearIt" type="text" id="one" v-model="one" placeholder="top left:左上角" />
+            <input @input='myClickHandler()' v-on:click="clearIt" type="text" id="one" v-model="one" placeholder="top left:左上角" />
             <label for="two"> Top Right</label>
-            <input v-on:click="clearIt" type="text" id="two" v-model="two" placeholder="top right:右上角" />
+            <input @input='myClickHandler()' v-on:click="clearIt" type="text" id="two" v-model="two" placeholder="top right:右上角" />
             <label for="three"> Bottom Right</label>
-            <input v-on:click="clearIt" type="text" id="three" v-model="three" placeholder="bottom right:右下角" />
+            <input @input='myClickHandler()' v-on:click="clearIt" type="text" id="three" v-model="three" placeholder="bottom right:右下角" />
             <label for="four"> Bottom Left</label>
-            <input v-on:click="clearIt" type="text" id="four" v-model="four" placeholder="bottom left:左下角" />
-            <button v-on:click="myClickHandler"> Generate</button>
+            <input @input='myClickHandler()' v-on:click="clearIt" type="text" id="four" v-model="four" placeholder="bottom left:左下角" />
+            <!--<button v-on:click="myClickHandler"> Generate</button>-->
             <div class="copy">{{str}}
             </div>
         </div>
@@ -34,10 +34,10 @@
 <script>
 
     var myData = {
-        "one": "0px",
-        "two": "0px",
-        "three": "0px",
-        "four": "0px",
+        "one": "0",
+        "two": "0",
+        "three": "0",
+        "four": "0",
         "str": ""
     };
     new Vue({
@@ -46,7 +46,7 @@
         methods: {
             myClickHandler: function(e) {
                 var str = "";
-                str += myData.one + " " + myData.two  + " " + myData.three + " " + myData.four;
+                str += myData.one+'px' + " " + myData.two+'px'  + " " + myData.three+'px' + " " + myData.four+'px';
                 $(".circle").css("border-radius", str);
                 myData.str = "border-radius: " + str;
             },
