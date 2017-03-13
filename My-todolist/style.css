@@ -1,0 +1,129 @@
+/* css reset*/
+body,h1,h2,p,form{ margin:0; }
+ol,ul{ margin:0; padding:0; }
+li{ list-style:none; }
+input{ outline:none; }
+.clearfix:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+.clearfix{ zoom:1;}
+
+/* main css*/
+body{
+	/*font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', '微软雅黑', sans-serif;*/
+	font-family:'Microsoft Yahei', '微软雅黑', sans-serif;
+	background:#f4f7ed;
+}
+header{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	background-color:#323232;
+}
+h1{
+	color:#4ea5ad;
+	font-size:24px;
+	float:left;
+}
+.add{
+	width:60%;
+	height:30px;
+	line-height:30px;
+	border-radius:8px;
+	float:right;
+	padding:0 10px;
+	margin-top:8px;
+	font-size:14px;
+}
+footer,section{
+	width:600px;
+	margin:0 auto;
+}
+h2{ 
+	padding:20px 0;
+	position:relative;
+}
+h2 a{
+	color:#000;
+	font-size:20px;
+	text-decoration:none;
+}
+h2 a:hover{
+	text-decoration:none;
+	color:#5bc4c7
+}
+h2 span{
+	font-size:16px;
+	color:#ccc;
+	position:absolute;
+	top:26px;
+	right:10px;
+}
+li{
+	padding:5px 0;
+	margin-bottom:5px;
+	height:100%;
+	border-radius:4px;
+}
+#todolist li{ 
+	background:#fff;
+	border-left:6px solid green; 
+}
+#donelist li{ 
+	background:#e6e6e6;
+	border-left:6px solid #ccc;
+	color:#666; 
+}
+li div{
+	float:left;
+}
+li div:nth-child(2){
+	float:right;
+	padding-right:10px;
+}
+li div:nth-child(3){
+	padding:0 18px 0 10px;
+	width:510px;
+	/*cursor:pointer;*/
+}
+li .checkbox{
+	float:left;
+	width:16px;
+	height:16px;
+	margin-left:10px;
+	*display:inline;
+}
+li .text{
+	width:500px;
+	display:none;
+}
+li p{
+	letter-spacing:1px;
+	word-wrap:break-word;
+	word-break:break-all;
+	max-width:510px;
+	font-size:16px;
+}
+.del{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	background:url('../images/del.gif') no-repeat 0 0;
+	background-size:14px 14px;
+	position:relative;
+	top:2px;
+}
+footer{
+	margin-top:20px;
+	text-align:right;
+}
+footer a{
+	color:#ccc;
+	font-size:14px;
+	/*text-decoration:none;*/
+	margin-left:20px;
+}
+@media screen and (max-device-width: 620px) {section{width:96%;padding:0 2%;}}
+@media screen and (min-width: 620px) {section{width:600px;padding:0 10px;}}

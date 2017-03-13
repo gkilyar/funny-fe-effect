@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>一款简单的待办事件列表</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<section class="hd clearfix">
+			<h1 class="title">ToDoList</h1>
+			<input class="add" id="add" type="text" placeholder="添加ToDo" autocomplete="off" required title="请输入您要添加的待办事件">
+		</section>
+	</header>
+	<section>
+		<h2 class=""><a href="javascript:;" id="showTodo">正在进行</a><span id="count1"></span></h2>
+		<ul id="todolist">
+		</ul>
+		<h2 class=""><a href="javascript:;" id="showDone">已经完成</a><span id="count2"></span></h2>
+		<ul id="donelist">
+		</ul>
+	</section>
+	<footer>
+		<span><a href="javascript:;" id="clearCompleted">Clear completed</a></span>
+		<span><a href="javascript:;" id="clearAll">Clear All</a></span>
+	</footer>
+	<script src="index.js"></script>
+</body>
+</html>
