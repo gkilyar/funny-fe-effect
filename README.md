@@ -27,3 +27,5 @@ It's learned By [方方老师](https://github.com/jirengu-inc)
 - issue Javascript 数组篇
 - issue Javascript DOM篇
 ### 2017/03/15 Silding_door
+### 2017/03/15 DOMready Learned the method deal the HTMLDOM onloading,waiting for it,use the special way to fix this problem.
+### 2017/03/15 Learning book MVC(``Javascript``),build application by MVC patern, i will learn it everyday and also update it.
