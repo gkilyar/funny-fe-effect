@@ -1,0 +1,60 @@
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Test Dom</title>
+</head>
+<body>
+<h1 id="header">asdasdasdasdasdasdasdasd</h1>	
+<script type="text/javascript">
+	function myReady (fn) {
+	//fn is callback
+	//现代浏览器读，对DOMContentLoaded事件的处理采用标准的事件绑定方式
+
+	//区分浏览器：
+	if (document.addEventListner) {
+		document.addEventListner("DOMContentLoaded",fn,false);  //在冒泡阶段捕获
+	} else{
+		IEContentLoaded(fn);
+	};
+
+	//IE模拟DOMContentLoaded
+	function IEContentLoaded(fn){
+		//首先将document缓存到一个变量里
+		var d = window.document;
+		var done = false;
+		//init,只执行一次用户的回调函数init()
+		var init = function () {
+			//回调函数在domReady之后只执行一次
+			if(!done){
+				done = true;
+				fn();
+			}
+		};
+		//if document的加载状态未就绪，侦测状态的函数表达式
+		(function(){
+			try{
+				//DOM树未创建之前调用doScroll会抛出异常
+				d.documentElement.doScroll('left');
+			}catch(e){
+				//延迟在试一次
+				setTimeout(arguments.callee，50);  //这个callee是指调用自身的方法
+				return ;  //实现递归
+			}
+
+			//没有错误时就说明DOM树创建完毕了，然后立马执行用户的回调
+			init();
+		})();
+
+		//监听document的加载状态
+		d.onreadystatechange = function(){
+			//if user 在DOMReady之后绑定的函数，就立马执行
+			if(d.readyState == 'complete'){
+				d.onreadystatechange = null;
+				init();
+			}
+		}
+	}
+}
+</script>
+</body>
+</html>
